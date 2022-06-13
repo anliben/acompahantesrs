@@ -1,0 +1,19 @@
+
+<ng-container *ngIf="mostrar" #modal>
+    <div class="modal">
+        <div class="text-xl font-medium text-purple-600 mb-4">
+          <h1>{{title}}</h1>
+        </div>
+         <p class="mb-3">
+           {{message}}
+         </p>
+        <button
+          (click)="toggle()"
+          class="fixed right-0 mr-7 -mt-3">
+        <span class="text-purple-600 mb-4 font-medium">OK</span>
+      </button>
+
+    </div>
+    <div (click)="toggle()"
+         class="overlay"></div>
+  </ng-container>

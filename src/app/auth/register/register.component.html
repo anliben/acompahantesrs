@@ -1,0 +1,13 @@
+<div class="h-full flex flex-col justify-center items-center ">
+  <img class="mt-12 mb-12" width="200px" height="200px" alt="logo-tgatasmix" src="https://tgatasmix.com.br/assets/icon.png" alt="">
+  <h1 class="text-xl mb-12 font-mono font-bold text-xl text-purple-900">Crie sua conta</h1>
+  <input [(ngModel)]="email" (ngModelChange)="emailChange()" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" class="border-2 {{colorEmailValid}} rounded-md mb-1 w-96 p-1" type="text" placeholder="Email">
+  <input [(ngModel)]="password" (ngModelChange)="passwordChange()" class="border-2 {{colorPasswordValid}} rounded-md mb-1 w-96 p-1" type="text" placeholder="Senha">
+  <input [(ngModel)]="re_password" class="border-2 rounded-md mb-1 w-96 p-1" type="text" placeholder="Confirmar senha">
+  <span class="text-center text-red-600 text-xl font-bold font-sans">{{error_message}}</span>
+  <div class="flex flex-row mt-5">
+    <button routerLink="/" class="bg-red-600 text-white mr-4 w-52 h-11 rounded-lg">Cancelar</button>
+    <button (click)="register()" class="bg-purple-800 text-white w-52 h-11 rounded-lg">Registrar</button>
+  </div>
+  <button routerLink="/login" class="text-red-600 mt-12 font-bold text-xl">Login</button>
+</div>

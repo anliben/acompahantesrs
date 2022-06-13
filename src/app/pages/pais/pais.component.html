@@ -1,0 +1,19 @@
+<div>
+  <app-menu estados=""></app-menu>
+  <div class="mt-28">
+    <main class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly">
+      <div *ngFor="let pais of paises; trackBy:identify" class="" (click)="changeScreen(pais.nome)">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative">
+          <img width="200px" height="200px" class="" src="{{pais.foto}}"
+            alt="{{pais.descricao}}">
+          <div
+            class=" absolute top-0 z-10 p-5 w-full h-full ">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-2xl">{{pais.nome}}
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </main>
+  </div>
+</div>

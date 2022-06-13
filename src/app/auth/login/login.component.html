@@ -1,0 +1,17 @@
+<div class="h-full flex flex-col justify-center items-center ">
+
+  <img class="mt-12 mb-12" width="200px" height="200px" alt="logo-tgatasmix"
+    src="https://tgatasmix.com.br/assets/icon.png" alt="">
+  <h1 class="text-xl mb-12 font-mono font-bold text-xl text-purple-900">Bem Vindo</h1>
+  <input [(ngModel)]="email" (ngModelChange)="emailChange()"
+    class="border-2 {{colorEmailValid}} rounded-md mb-1 w-96 p-1" type="text" placeholder="Email">
+  <input [(ngModel)]="password" (ngModelChange)="passwordChange()"
+    class="border-2 {{colorPasswordValid}} rounded-md mb-1 w-96 p-1" type="text" placeholder="Senha">
+  <span class="text-center text-red-600 text-xl font-bold font-sans">{{error_message}}</span>
+  <div class="flex flex-row justify-end items-center">
+    <p class="text-red-600">Continuar conectado?</p>
+    <input class="border-2 rounded-md mb-1 w-96 p-1 w-11" type="checkbox">
+  </div>
+  <button (click)="login()" class="bg-purple-800 text-white w-96 mt-5 h-11 rounded-lg">Login</button>
+  <button routerLink="/register" class="text-red-600 mt-12 font-bold text-xl">Registrar</button>
+</div>

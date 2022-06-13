@@ -1,0 +1,113 @@
+<header>
+    <app-menu></app-menu>
+</header>
+<app-modal title="Estamos quase la" [mostrar]="mostrar" message="Perfil criado com sucesso. Agora temos que colocar uma foto de Perfil e Banner de Cidade"></app-modal>
+<div class="flex items-center justify-center pt-6 pb-6 pl-5 pr-5 mt-28">
+
+    <div class="mx-auto w-full max-w-[550px]">
+        <h2 class="
+          font-bold
+          text-3xl
+          sm:text-3xl
+          md:text-[40px]
+          text-gray-600
+          mb-4
+          ">
+            Editar Perfil
+        </h2>
+        <form [formGroup]="formPerfil" method="POST">
+            <div class="mb-4">
+                <label for="name" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Nome e Sobrenome
+                </label>
+                <input type="text" formControlName="nome" name="name" id="name" placeholder="Ex: Agatha Souza"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="age" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Idade
+                </label>
+                <input type="number" formControlName="idade" name="age" id="age" placeholder="Digite sua idade"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="cache" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Cache
+                </label>
+                <input type="text" formControlName="cache" name="cache" id="cache" placeholder="Digite seu cache"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="tipoPagamneto" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Tipo de pagamento
+                </label>
+                <input type="text" formControlName="pagamento" name="pagamento" id="tipoPagamento"
+                    placeholder="Digite o tipo de pagamento"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Celular
+                </label>
+                <input type="text" formControlName="telefone" name="phone" id="phone" placeholder="(99)99999-9999"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="horarioAtendimento" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Horario de atendimento
+                </label>
+                <input type="text" formControlName="horario" name="horarioAtendimento" id="horarioAtendimento"
+                    placeholder="00:00:00"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+              <label for="city" class="mb-1 block text-base font-medium text-[#07074D]">
+                Estado onde mora
+            </label>
+              <select formControlName="estado" (change)="searchCidade($event)" class="mb-4 w-full h-12 rounded-sm text-gray-900 bg-white border border-gray-200">
+                <option *ngFor="let estado of estados; TrackBy:identify" value="{{estado.nome}}">{{estado.nome}}</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="city" class="mb-1 block text-base font-medium text-[#07074D]">
+                Cidade onde mora
+            </label>
+              <select formControlName="cidade" class="mb-4 w-full h-12 rounded-sm text-gray-900 bg-white border border-gray-200">
+                <option *ngFor="let cidade of cidades; TrackBy:identify" value="{{cidade.nome}}">{{cidade.nome}}</option>
+              </select>
+            </div>
+            <div class="mb-4">
+                <label for="region" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Região
+                </label>
+                <input type="email" formControlName="regiao" name="region" placeholder="Região de atendimento"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            </div>
+            <div class="mb-4">
+                <label for="descricao" class="mb-1 block text-base font-medium text-[#07074D]">
+                    Descrição
+                </label>
+                <textarea rows="4" formControlName="descricao" name="descricao" placeholder="Digite sua descrição"
+                    class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+            </div>
+            <div>
+                <div class="flex justify-between">
+                    <button
+                    *ngIf="!editado"
+                        (click)="saveProfile()"
+                        class="hover:shadow-form rounded-md bg-primary py-3 px-8 mx-4 text-base font-semibold text-white outline-none">
+                        Salvar
+                    </button>
+                    <button (click)="backProfile()"
+                        class="hover:shadow-form rounded-md py-3 px-8 mx-4 border border-primary border-solid text-primary font-semibold outline-none">
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+
+</footer>

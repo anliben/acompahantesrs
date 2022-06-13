@@ -1,0 +1,42 @@
+<header>
+  <app-menu></app-menu>
+  <app-modal [title]="title" [message]="message" [mostrar]="mostrar"></app-modal>
+</header>
+<div class="flex justify-center mt-28">
+  <div
+    class="h-[208px] w-[208px] rounded-full m-7 border-4 border-solid border-[#9c9c9c] z-11"
+  >
+    <img [src]="img" class="h-[200px] w-[200px] rounded-full z-10" />
+  </div>
+</div>
+<div class="flex justify-center relative mt-2">
+  <button
+    class="flex flex-row h-10 w-[100px] rounded-md transition ease-in-out delay-150 bg-primary hover:scale-110 hover:bg-secundary duration-150 leading-3"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 mt-2 ml-2 text-white"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
+      />
+    </svg>
+    <span class="my-auto text-white">Upload</span>
+  </button>
+  <input
+    accept="image/*"
+    class="left-0 top-0 opacity-0 absolute text-[90px]"
+    type="file"
+    id="file"
+    name="file"
+    (change)="takePhoto($event)"
+  />
+</div>
+<h1 *ngIf="updated" class="text-2xl font-bold  text-white bg-primary text-center py-5 bottom-0 absolute w-screen mt-5">Foto Atualizada</h1>
+<footer></footer>

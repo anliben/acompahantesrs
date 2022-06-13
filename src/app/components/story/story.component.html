@@ -1,0 +1,66 @@
+<header>
+    <app-menu></app-menu>
+</header>
+
+<div class="carousel flex justify-center relative mt-28">
+    <div
+        class="carousel-inner relative overflow-hidden w-[80%] sm:w-[400px] h-[500px] my-2 border-4 border-solid border-[#9c9c9c]">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
+            checked="checked">
+        <div class="carousel-item absolute opacity-0">
+            <img class="object-cover w-full h-[500px]" src="https://via.placeholder.com/400x700">
+        </div>
+        <label for="carousel-3"
+            class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-yellow-500 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-2"
+            class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0" style="height:75vh;">
+            <img class="" src="https://via.placeholder.com/400x700">
+        </div>
+        <label for="carousel-1"
+            class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-3"
+            class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0" style="height:75vh;">
+            <img class="" src="https://via.placeholder.com/400x700">
+        </div>
+        <label for="carousel-2"
+            class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-1"
+            class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+        <ol class="carousel-indicators">
+            <li class="inline-block mr-3">
+                <label for="carousel-1"
+                    class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+                <label for="carousel-2"
+                    class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+                <label for="carousel-3"
+                    class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<div class="flex justify-center relative">
+    <button
+        class="flex flex-row h-10 w-[100px] rounded-md transition ease-in-out delay-150 bg-primary hover:scale-110 hover:bg-secundary duration-150 leading-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 mt-2 ml-2 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+        </svg>
+        <span class="my-auto text-white">Upload</span>
+    </button>
+  <input accept="image/*" class="left-0 top-0 opacity-0 absolute text-[90px]" type="file" id="file" name="file" (change)="takePhoto($event)">
+</div>
+<footer>
+
+</footer>

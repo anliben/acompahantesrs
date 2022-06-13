@@ -1,0 +1,21 @@
+<div>
+  <app-menu></app-menu>
+  <div>
+
+    <main class="flex mt-28 flex-row flex-wrap p-3 items-stretch align-sub justify-evenly">
+      <div *ngFor="let cidade of cidades; trackBy:identify" (click)="changeScreen(cidade.nome)">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative">
+          <img width="200px" height="200px" src="{{cidade.foto}}"
+            alt="{{cidade.descricao}}">
+          <div
+            class=" absolute top-0 z-10 p-5 w-full h-full">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-2xl">{{cidade.nome}}
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </main>
+  </div>
+
+</div>

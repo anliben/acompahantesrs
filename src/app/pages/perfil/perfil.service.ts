@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import {
+  AngularFireDatabase,
+} from '@angular/fire/compat/database';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PerfilService {
+
+  constructor(
+    private db: AngularFireDatabase
+  ) { }
+
+  getAnunciantes(local: string, nome: string) {
+    return this.db.list(`/${local}/${nome}`);
+  }
+}
