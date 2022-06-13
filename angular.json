@@ -34,7 +34,9 @@
               "src/favicon.ico",
               "src/manifest.json",
               "src/*.js",
-              "src/ws.js"
+              "src/ws.js",
+              "src/assets/image/background-profile-1.png",
+              "src/assets/image/background-profile-2.png"
             ],
             "styles": [
               "src/styles.scss"
