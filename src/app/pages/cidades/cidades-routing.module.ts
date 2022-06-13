@@ -4,10 +4,6 @@ import { CidadesComponent } from './cidades.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: CidadesComponent
-  },
-  {
     path: ':id',
     component: CidadesComponent
   }

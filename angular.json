@@ -28,6 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets/*.*",
+              "src/assets/*.png",
+              "src/assets/share.png",
               "src/assets/icon.png",
               "src/favicon.ico",
               "src/manifest.json",

@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErroComponent } from './shared/erro/erro.component';
 
 const routes: Routes = [
-
-  { path: '', redirectTo: 'pais', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)
@@ -14,16 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'estados',
+    path: '',
     loadChildren: () => import('./pages/estados/estados.module').then(m => m.EstadosModule)
   },
   {
     path: 'cidades',
     loadChildren: () => import('./pages/cidades/cidades.module').then(m => m.CidadesModule)
-  },
-  {
-    path: 'pais',
-    loadChildren: () => import('./pages/pais/pais.module').then(m => m.PaisModule)
   },
   {
     path: 'perfil',

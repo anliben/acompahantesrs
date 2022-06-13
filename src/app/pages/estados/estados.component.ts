@@ -15,13 +15,11 @@ export class EstadosComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     private fire: FireServiceService
   ) { }
 
   ngOnInit(): void {
-   this.local = this.activatedRoute.snapshot.params['id'].split('-').join(' ');
-    this.fire.getWhere('estados', 'estado', '==', this.local).snapshotChanges().forEach(snap => {
+    this.fire.getWhere('estados', 'estado', '==', 'rio grande do sul').snapshotChanges().forEach(snap => {
 
       snap.forEach(doc => {
         const data = doc.payload.doc.data() as object;
