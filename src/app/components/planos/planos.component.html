@@ -1,79 +1,82 @@
 <header>
   <app-menu></app-menu>
 </header>
-<section class="bg-white pt-6 pb-6 relative z-20 overflow-hidden mt-24">
+<section class="bg-white pt-6 pb-6 relative z-0 overflow-hidden mt-24">
   <div class="container">
     <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4 h-16">
         <div class="mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
           <h2
-            class="font-bold text-3xl sm:text-4xl md:text-[40px] text-gray-600 mb-4"
+            class="font-bold text-3xl sm:text-4xl md:text-[40px] text-gray-600 mb-4 ml-4"
           >
             Planos
           </h2>
         </div>
       </div>
     </div>
-    <div
-      *ngFor="let plano of planos; trackBy:identify"
-      class="flex flex-wrap justify-center -mx-4"
-    >
-      <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-        <div
-          class="bg-white relative z-10 overflow-hidden border border-primary border-opacity-40 shadow-pricing py-5 px-4 sm:p-12 lg:py-10 lg:px-6 xl:p-12 mb-10"
-        >
-          <span class="text-primary font-semibold text-lg block">
-            {{ plano.nome }}
-          </span>
-          <h2 class="font-bold text-dark mb-5 text-[42px]">
-            R$ {{ plano.valor }}
-            <span class="text-base text-body-color font-medium"> / mes </span>
-          </h2>
-          <p
-            class="text-base text-body-color pb-8 mb-4 border-b border-[#F2F2F2]"
+    <div class="flex flex-wrap justify-center">
+      <div
+        *ngFor="let plano of planos; trackBy:identify"
+        class=""
+      >
+        <div class="w-[350px] h-[450px] px-4">
+          <div
+            class="bg-white relative z-10 overflow-hidden border border-primary border-opacity-40 shadow-pricing py-5 px-4 sm:p-12 lg:py-10 lg:px-6 xl:p-12 mb-10"
           >
-           {{ plano.descricao }}
-          </p>
-          <div class="mb-7">
-            <p *ngFor="let ganho of plano.ganhos; trackBy:identify" class="text-base text-body-color leading-loose mb-1">
-              {{ ganho }}
-            </p>
-          </div>
-          <a
-            href="{{plano.link}}"
-            class="w-full block font-semibold text-primary bg-transparent border border-[#fbd4ff] rounded-md text-center p-4 hover:text-white hover:bg-secundary hover:border-secundary transition"
-          >
-            Escolher plano
-          </a>
-          <div>
-            <span class="absolute right-0 top-7 z-[-1]">
-              <svg
-                width="77"
-                height="172"
-                viewBox="0 0 77 172"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="86" cy="86" r="86" fill="url(#paint0_linear)" />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear"
-                    x1="86"
-                    y1="0"
-                    x2="86"
-                    y2="172"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#d172a1 " stop-opacity="0.09" />
-                    <stop offset="1" stop-color="#C4C4C4" stop-opacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            <span class="text-primary font-semibold text-lg block">
+              {{ plano.nome }}
             </span>
-            <span class="absolute right-4 top-4 z-[-1]"> </span>
+            <h2 class="font-bold text-dark mb-5 text-[42px]">
+              R$ {{ plano.valor }}
+              <span class="text-base text-body-color font-medium"> / mes </span>
+            </h2>
+            <p
+              class="text-base text-body-color pb-8 mb-4 border-b border-[#F2F2F2]"
+            >
+             {{ plano.descricao }}
+            </p>
+            <div class="mb-7">
+              <p *ngFor="let ganho of plano.ganhos; trackBy:identify" class="text-base text-body-color leading-loose mb-1">
+                {{ ganho }}
+              </p>
+            </div>
+            <a
+              href="{{plano.link}}"
+              class="w-full block font-semibold text-primary bg-transparent border border-[#fbd4ff] rounded-md text-center p-4 hover:text-white hover:bg-secundary hover:border-secundary transition"
+            >
+              Escolher plano
+            </a>
+            <div>
+              <span class="absolute right-0 top-7 z-[-1]">
+                <svg
+                  width="77"
+                  height="172"
+                  viewBox="0 0 77 172"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="86" cy="86" r="86" fill="url(#paint0_linear)" />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear"
+                      x1="86"
+                      y1="0"
+                      x2="86"
+                      y2="172"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#d172a1 " stop-opacity="0.09" />
+                      <stop offset="1" stop-color="#C4C4C4" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <span class="absolute right-4 top-4 z-[-1]"> </span>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PhotoInterface } from 'src/app/interfaces/photo.interface';
 import { FireServiceService } from 'src/app/service/fire-service.service';
@@ -16,8 +17,15 @@ export class FotoPerfilComponent implements OnInit {
   message = '';
   mostrar = false;
   updated: boolean = false;
+  imageDelete!: string;
+  imgBase!: File;
 
-  constructor(private fire: FireServiceService, private imgBB: ImgbbService) {}
+
+  constructor(
+    private fire: FireServiceService,
+    private imgBB: ImgbbService,
+    private http: HttpClient
+    ) {}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user') as string;
@@ -40,14 +48,32 @@ export class FotoPerfilComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => (this.img = e.target.result);
       reader.readAsDataURL(event.target.files[0]);
-      const imgBase = event.target.files[0];
-      this.imgBB.upload(imgBase).subscribe((res: PhotoInterface) => {
-        this.fire.updateOne('anunciantes', this.user, {
-          imageProfile: res.thumb.url,
-          imageProfileUpdated: true,
-        });
-        this.updated = true;
-      });
+      this.imgBase = event.target.files[0];
+      this.img = this.imgBase;
+      this.updated = false;
+      this.updated = false;
     }
+  }
+
+  upload() {
+    this.imgBB.upload(this.imgBase).subscribe((res: PhotoInterface) => {
+      this.fire.updateOne('anunciantes', this.user, {
+        imageProfile: res.thumb.url,
+        imageProfileUpdated: true,
+        imageProfileDelete: res.delete_url
+      });
+      this.updated = true;
+    });
+  }
+  deleteImage(){
+    this.fire.updateOne('anunciantes', this.user, {
+      imageProfile: '',
+      imageProfileUpdated: false,
+      imageProfileDelete: ''
+    });
+    this.updated  = false;
+    this.http.get(this.imageDelete).subscribe(() => {
+    })
+    ///this.router.navigateByUrl(`${this.imageDelete}`);
   }
 }

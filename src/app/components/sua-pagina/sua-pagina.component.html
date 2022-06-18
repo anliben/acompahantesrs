@@ -1,88 +1,66 @@
-    <div class="relative">
-        <div class="fixed top-0 w-full z-50">
-            <div (click)="switchMenu()" *ngIf="!!sideMenu"
-              class="p-4 space-y-2 mt-5 ml-1 bg-secundary rounded fixed right-10 h-[56px] shadow w-1/16">
-              <span class="block w-8 h-0.5 bg-gray-100 animate-pulse"></span>
-              <span class="block w-8 h-0.5 bg-gray-100 animate-pulse"></span>
-              <span class="block w-8 h-0.5 bg-gray-100 animate-pulse"></span>
-            </div>
-            <div *ngIf="sideMenu === true" class="w-64 fixed top-0 right-0 mt-[96px] z-40" aria-label="Sidebar">
-              <div class="overflow-y-auto py-4 px-3 bg-[#f7f7f7] rounded-sm shadow-xl">
-                <ul class="space-y-2">
-                  <li>
-                    <a routerLink="/register"
-                      class="flex items-center p-2 text-base font-medium border-2 border-secundary text-gray-900 rounded-lg dark:text-secundary hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700">
-                      <span class="ml-3">Faca sua conta</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/estados/sao-paulo"
-                      class="flex items-center p-2 text-base font-medium text-[#e0e0e0] rounded-lg dark:text-secundary hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <span class="flex-1 ml-3 whitespace-nowrap">Sao Paulo</span>
-                      <span
-                        class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-secundary dark:text-blue-200">3</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-secundary hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <span class="flex-1 ml-3 whitespace-nowrap">Anunciantes</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-secundary hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <span class="flex-1 ml-3 whitespace-nowrap">Tops 10</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-secundary hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <span class="flex-1 ml-3 whitespace-nowrap">Suporte</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-secundary hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <span class="flex-1 ml-3 whitespace-nowrap">Fale Conosco</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="flex flex-row pl-8 p-5 h-24 bg-primary">
-              <h2 class="text-[#f5f5f5] mt-4 font-mono font-bold text-2xl">TgatasMix</h2>
-              <div class="w-full"></div>
-              <div (click)="switchMenu()" *ngIf="!sideMenu" class="p-4 relative right-5 space-y-2 bg-[#f5f5f5] rounded shadow w-16">
-                <span class="block w-8 h-0.5 bg-primary animate-pulse"></span>
-                <span class="block w-8 h-0.5 bg-primary animate-pulse"></span>
-                <span class="block w-8 h-0.5 bg-primary animate-pulse"></span>
-              </div>
-            </div>
-
-          </div>
-        <div class="mt-28 flex justify-center relative z-0">
-        <!-- <carousel
-            [cellWidth]="350"
-            [width]="350"
-            [height]="500"
-            [images]="images">
-        </carousel> -->
-        </div>
-
-<div class="flex justify-center relative">
-    <button
-        class="flex flex-row h-10 w-[100px] rounded-md transition ease-in-out delay-150 bg-primary hover:scale-110 hover:bg-secundary duration-150 leading-3">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 mt-2 ml-2 text-white" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-        </svg>
-        <span class="my-auto text-white">Upload</span>
-    </button>
-  <input accept="image/*" class="left-0 top-0 opacity-0 absolute text-[90px]" type="file" id="file" name="file" (change)="takePhoto($event)">
-
+<app-menu></app-menu>
+<div class="mt-[110px] mb-6 mx-2 text-center">
+  <h1 class="font-bold text-3xl sm:text-4xl md:text-[40px] text-gray-600 ml-4">
+    Galeria
+  </h1>
+  <span class="font-normal md:text-[40px] text-gray-600 ml-4">
+    Aqui você pode editar sua galeria de fotos do seu perfil
+  </span>
+  <br />
+  <strong class="ml-4"> Toque em alguma foto </strong>
 </div>
-<footer>
+<div class="grid grid-cols-3 gap-4 flex items-center p-5">
+  <div
+    *ngFor="let image of images"
+    class="flex items-center justify-center mb-4"
+  >
+    <img
+      alt="gallery"
+      class="block object-cover object-center w-full h-full rounded-lg"
+      src="{{ image.path }}"
+    />
+    <input
+      class="h-[200px] w-[100px] opacity-0 bg-black absolute z-20 text-[40px]"
+      accept="image/*"
+      type="file"
+      id="file"
+      name="file"
+      (change)="takePhoto($event, image.id)"
+    />
+  </div>
+  <div (click)="addPhoto()" class="flex items-center justify-center mb-4">
+    <svg
+    class="block object-cover object-center rounded-lg border border-gray-500 w-full h-full"
+    xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" viewBox="0 0 24 24"><path d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-8 12c-2.71 0-5-2.29-5-5 0-2.711 2.29-5 5-5s5 2.289 5 5c0 2.71-2.29 5-5 5z"/><path d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"/></svg>
+ </div>
 
-</footer>
+<div
+  *ngIf="updated"
+  class="flex items-center justify-center fixed bottom-4 z-20 w-screen"
+>
+  <div
+    class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg"
+    role="group"
+  >
+    <button
+      (click)="cancelar()"
+      type="button"
+      class="w-full h-11 rounded-l inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out"
+    >
+      Cancelar
+    </button>
+    <button
+      (click)="upload()"
+      type="button"
+      class="w-full h-11 rounded-r inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out"
+    >
+      Upload
+    </button>
+  </div>
+</div>
+<h1
+  *ngIf="updatedModal"
+  class="text-2xl font-bold text-white bg-primary text-center py-5 bottom-0 absolute w-screen mt-5"
+>
+  Foto Atualizada
+</h1>

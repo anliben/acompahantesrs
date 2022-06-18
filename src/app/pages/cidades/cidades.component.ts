@@ -29,7 +29,6 @@ export class CidadesComponent implements OnInit {
         this.anunciantes.push({ id: id, ...data });
       });
     });
-    console.log(this.anunciantes);
 
   }
 

@@ -39,6 +39,7 @@ export class EditProfileComponent implements OnInit {
         this.estados.push({...data });
       });
     });
+    this.searchCidade()
   }
 
   saveProfile() {
@@ -69,7 +70,7 @@ export class EditProfileComponent implements OnInit {
       telefone: [model.telefone],
       cache: [model.cache],
       cidade: [model.cidade],
-      estado: [model.estado],
+      estado: [model.estado = 'rio grande do sul'],
       regiao: [model.regiao],
       descricao: [model.descricao],
       pagamento: [model.pagamento],
@@ -77,10 +78,10 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  searchCidade(event: any) {
+  searchCidade() {
+
     this.cidades = [];
-    const local = event.target.value.toLowerCase();
-    this.fire.getWhere('estados', 'cidade', '==', local).snapshotChanges().forEach(snap => {
+    this.fire.getWhere('estados', 'estado', '==', 'rio grande do sul').snapshotChanges().forEach(snap => {
       snap.forEach(doc => {
         const data = doc.payload.doc.data() as object;
         const id = doc.payload.doc.id;

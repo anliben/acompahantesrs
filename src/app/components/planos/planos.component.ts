@@ -23,7 +23,6 @@ export class PlanosComponent implements OnInit {
       });
     });
 
-    console.log(this.planos);
   }
 
   identify(index: number, item: any) {

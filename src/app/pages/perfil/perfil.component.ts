@@ -31,19 +31,6 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAnunciante();
-    console.log(this.cache)
-    console.log(this.cidade)
-    console.log(this.descricao)
-    console.log(this.horario)
-    console.log(this.idade)
-    console.log(this.imageBanner)
-    console.log(this.imageProfile)
-    console.log(this.nome)
-    console.log(this.pagamento)
-    console.log(this.posts)
-    console.log(this.regiao)
-    console.log(this.telefone)
-    console.log(this.user)
   }
 
   async getAnunciante(){

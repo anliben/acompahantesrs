@@ -40,9 +40,7 @@ export class StoryComponent implements OnInit {
         const fileRef = this.storage.ref(this.path);
         this.storage.upload(this.path, imgBase).snapshotChanges().pipe(
           finalize(() => {
-            console.log('Uploaded');
             fileRef.getDownloadURL().subscribe(url => {
-              console.log(url);
               this.fire.setStory('anunciantes', this.user, url);
             })
           })

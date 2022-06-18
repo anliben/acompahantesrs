@@ -51,7 +51,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     PlanosComponent,
     EditProfileComponent,
     ModalComponent,
-    ErroComponent
+    ErroComponent,
+    SuaPaginaComponent
   ],
   imports: [
     CommonModule,
