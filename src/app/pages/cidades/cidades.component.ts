@@ -21,8 +21,14 @@ export class CidadesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cidade = this.activatedRouter.snapshot.params['id'].split('-').join(' ');
-    this.fire.getWhere('anunciantes', 'cidade', '==', this.cidade).snapshotChanges().forEach(snap => {
+
+    console.log(
+      this.router.url.split('/')[1].split('-').join(' ')
+    );
+
+    let cidade: string = this.router.url.split('/')[1].split('-').join(' ')
+
+    this.fire.getWhere('anunciantes', 'cidade', '==', cidade).snapshotChanges().forEach(snap => {
       snap.forEach(doc => {
         let id = doc.payload.doc.id;
         const data: any = doc.payload.doc.data();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EstadosService } from 'src/app/pages/estados/estados.service';
 import { FireServiceService } from 'src/app/service/fire-service.service';
 
 
@@ -28,9 +29,11 @@ export class EditProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private db: AngularFirestore,
     private fire: FireServiceService,
+    private estadosService: EstadosService
   ) { }
 
   ngOnInit() {
+    this.cidades = this.estadosService.getCidades();
     this.user = localStorage.getItem('user') as string;
     this.createForm(model);
     this.fire.getAll('pais').snapshotChanges().forEach(snap => {
@@ -39,7 +42,6 @@ export class EditProfileComponent implements OnInit {
         this.estados.push({...data });
       });
     });
-    this.searchCidade()
   }
 
   saveProfile() {
@@ -78,17 +80,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  searchCidade() {
 
-    this.cidades = [];
-    this.fire.getWhere('estados', 'estado', '==', 'rio grande do sul').snapshotChanges().forEach(snap => {
-      snap.forEach(doc => {
-        const data = doc.payload.doc.data() as object;
-        const id = doc.payload.doc.id;
-        this.cidades.push({id:id, ...data });
-      });
-    });
-  }
   identify(index: number, item: any) {
     return item.id;
  }

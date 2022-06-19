@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProfileService } from './profile.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
-import { FireServiceService } from 'src/app/service/fire-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({

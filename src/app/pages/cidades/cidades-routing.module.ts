@@ -4,7 +4,7 @@ import { CidadesComponent } from './cidades.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: CidadesComponent
   }
 ];

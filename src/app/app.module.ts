@@ -8,7 +8,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { EstadosComponent } from './pages/estados/estados.component';
 import { CidadesComponent } from './pages/cidades/cidades.component';
 import { CommonModule } from '@angular/common';
-import { PaisComponent } from './pages/pais/pais.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -29,8 +28,6 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { ModalComponent } from './shared/modal/modal.component';
 import { ErroComponent } from './shared/erro/erro.component';
 import { SuaPaginaModule } from './components/sua-pagina/sua-pagina.module';
-import { SliderModule } from 'angular-image-slider';
-import { IvyCarouselModule } from 'angular-responsive-carousel/public-api';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
@@ -42,7 +39,6 @@ import { AnuncioComponent } from './components/anuncio/anuncio.component';
     RegisterComponent,
     EstadosComponent,
     CidadesComponent,
-    PaisComponent,
     MenuComponent,
     PerfilComponent,
     FotoPerfilComponent,
@@ -69,7 +65,7 @@ import { AnuncioComponent } from './components/anuncio/anuncio.component';
     ReactiveFormsModule,
     SuaPaginaModule,
     HttpClientModule,
-    ServiceWorkerModule.register('sw.js')
+    ServiceWorkerModule.register('sw.js'),
   ],
   providers: [ModalComponent],
   bootstrap: [AppComponent]

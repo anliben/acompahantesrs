@@ -36,7 +36,6 @@ export class PerfilComponent implements OnInit {
   async getAnunciante(){
     let user = this.activatedRoute.snapshot.params['user']
     this.fire.getWhere('anunciantes', 'nome', '==', user).snapshotChanges().forEach(snap => {
-      const id = snap[0].payload.doc.id;
       const data = snap[0].payload.doc.data() as any;
       this.nome = data.nome;
       this.imageProfile = data.imageProfile;
@@ -55,8 +54,6 @@ export class PerfilComponent implements OnInit {
     });
 
   }
-  identify(index: number, item: any) {
-    return item.id;
- }
+
 
 }
