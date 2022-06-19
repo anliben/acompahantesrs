@@ -1,7 +1,7 @@
 <header>
   <div class="fixed top-0 w-full z-20">
     <div (click)="switchMenu()" *ngIf="!!sideMenu"
-      class="p-4 space-y-2 mt-5 ml-1 bg-primary rounded fixed right-10 h-[56px] shadow w-1/16">
+      class="p-4 space-y-2 mt-5 ml-1 bg-[#db920b] rounded fixed right-10 h-[56px] shadow w-1/16">
       <span class="block w-8 h-0.5 bg-secundary animate-pulse"></span>
       <span class="block w-8 h-0.5 bg-secundary animate-pulse"></span>
       <span class="block w-8 h-0.5 bg-secundary animate-pulse"></span>
@@ -34,9 +34,10 @@
         </ul>
       </div>
     </div>
-    <div class="flex flex-row pl-8 p-5 h-24 bg-secundary">
-      <h2 class="text-[#f5f5f5] mt-4 font-mono font-bold text-2xl">Acompanhantes RS</h2>
-      <div class="w-full"></div>
+    <div class="flex flex-row justify-between pl-8 p-5 h-24 bg-secundary">
+      <div class="w-20">
+        <h2 class="text-[#f5f5f5] mt-4 font-mono font-bold text-[22px] w-[210px]">Acompanhantes RS</h2>
+      </div>
       <div (click)="switchMenu()" *ngIf="!sideMenu" class="p-4 relative right-5 space-y-2 bg-primary rounded shadow w-16">
         <span class="block w-8 h-0.5 bg-secundary animate-pulse"></span>
         <span class="block w-8 h-0.5 bg-secundary animate-pulse"></span>

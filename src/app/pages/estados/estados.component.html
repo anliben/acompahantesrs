@@ -1,21 +1,23 @@
 <div>
   <app-menu></app-menu>
-  <div>
+  <div class="flex justify-center bg-[#f7f7f7]">
 
-    <main class="flex mt-28 flex-row flex-wrap p-3 items-stretch align-sub justify-evenly">
+    <main class="flex mt-28 flex-row flex-wrap p-3 items-stretch align-sub justify-evenly sm:w-[80%]">
       <div *ngFor="let cidade of cidades; trackBy:identify" (click)="changeScreen(cidade.nome)">
         <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-        <figure class="shadow-2xl relative">
+        <figure class="relative ">
           <img width="200px" height="200px" src="{{cidade.foto}}"
+            class="h-[120px] w-[150px] md:h-[200px] md:w-[280px] rounded-md lg:h-[250px] lg:w-[350px] bg-secundary shadow-xs shadow-secundary "
             alt="{{cidade.descricao}}">
           <div
-            class=" absolute top-0 z-10 p-5 w-full h-full">
-            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-2xl">{{cidade.nome}}
+            class=" absolute bottom-0 z-10 p-5 w-full h-16 bg-gradient-to-t from-red-600/50 rounded-b-md">
+            <figcaption class="text-center mt-[8px] text-white font-bold italic hover:bg-transparent text-[15px] sm:text-xl leading-4 drop-shadow-md">{{cidade.nome}}
             </figcaption>
           </div>
         </figure>
       </div>
     </main>
+
   </div>
 
 </div>

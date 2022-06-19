@@ -27,6 +27,9 @@ export class EstadosComponent implements OnInit {
         this.cidades.push({id: id, ...data });
       });
     });
+
+    console.log(this.cidades);
+    
   }
 
   changeScreen(local: string) {
