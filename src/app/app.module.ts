@@ -33,6 +33,7 @@ import { SliderModule } from 'angular-image-slider';
 import { IvyCarouselModule } from 'angular-responsive-carousel/public-api';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AnuncioComponent } from './components/anuncio/anuncio.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     EditProfileComponent,
     ModalComponent,
     ErroComponent,
-    SuaPaginaComponent
+    SuaPaginaComponent,
+    AnuncioComponent
   ],
   imports: [
     CommonModule,

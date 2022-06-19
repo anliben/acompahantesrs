@@ -8,6 +8,7 @@ import { StoryComponent } from '../../components/story/story.component';
 import { SuaPaginaComponent } from '../../components/sua-pagina/sua-pagina.component';
 import { PlanosComponent } from '../../components/planos/planos.component';
 import { EditProfileComponent } from '../../components/edit-profile/edit-profile.component';
+import { AnuncioComponent } from 'src/app/components/anuncio/anuncio.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     component: EditProfileComponent
+  },
+  {
+    path: 'anuncio',
+    component: AnuncioComponent
   }
 ];
 
