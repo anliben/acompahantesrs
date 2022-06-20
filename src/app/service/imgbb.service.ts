@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,11 @@ export class ImgbbService {
   ) { }
 
   upload(file: File): Observable<any> {
+    const url = `${environment.api}/upload`;
     const formData = new FormData();
     formData.append('image', file);
     return this.http
-    .post('/upload', formData, {
+    .post(url, formData, {
       params: {
         key: this.apiKey
       }

@@ -6,19 +6,7 @@
    <main class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly">
 
      <div *ngFor="let girl of anunciantes; trackBy:identify" (click)="changeScreen(girl.cidade, girl.nome)">
-      <div *ngIf="girl.imageProfile &&
-      girl.cache &&
-      girl.cidade &&
-      girl.descricao &&
-      girl.horario &&
-      girl.idade &&
-      girl.imageBanner &&
-      girl.nome &&
-      girl.pagamento &&
-      girl.posts &&
-      girl.regiao &&
-      girl.telefone &&
-      girl.user">
+      <div *ngIf="girl.activated">
       <figure class="mb-3 bg-primary w-[320px] shadow-sm rounded-sm">
          <div class="flex flex-row h-6">
 
