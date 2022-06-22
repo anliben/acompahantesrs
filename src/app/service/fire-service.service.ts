@@ -53,7 +53,7 @@ export class FireServiceService {
         datas = doc.payload.doc.data()
         if(this.count === 1){
           this.db.collection(collection).doc(doc.payload.doc.id).update({
-            posts: [...datas.posts, newData]
+            posts: [...datas.posts, ...newData]
           })
           this.count++;
         }

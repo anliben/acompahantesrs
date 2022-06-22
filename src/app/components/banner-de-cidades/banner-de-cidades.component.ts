@@ -54,11 +54,11 @@ export class BannerDeCidadesComponent implements OnInit {
   }
 
   upload() {
-    this.imgBB.upload(this.imgBase).subscribe((res: PhotoInterface) => {
+    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: PhotoInterface) => {
       this.fire.updateOne('anunciantes', this.user, {
-        imageBanner: res.thumb.url,
+        imageBanner: res,
         imageBannerUpdated: true,
-        imageBannerDelete: res.delete_url,
+        imageBannerDelete: '',
       });
       this.updated = true;
     });

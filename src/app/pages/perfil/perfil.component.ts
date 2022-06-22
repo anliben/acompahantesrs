@@ -51,6 +51,9 @@ export class PerfilComponent implements OnInit {
       this.posts = data.posts;
       this.cache = data.cache;
 
+      console.log(data.posts);
+
+
     });
 
   }

@@ -87,19 +87,15 @@ export class SuaPaginaComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       this.imgBase = event.target.files[0];
       this.updated = true;
+
     }
   }
 
   upload() {
-    for (let index = 0; index < this.images.length; index++) {
-      const element = this.images[index];
-      if (element.path !== 'https://via.placeholder.com/400x700') {
-        this.imgBB.upload(this.imgBase).subscribe((res: PhotoInterface) => {
-          this.fire.setOne('anunciantes', this.user, res.image.url);
-          this.update();
-        });
-      }
-    }
+    this.imgBB.uploadFotos(this.imgBase, this.user).subscribe((res: any) => {
+      this.fire.setOne('anunciantes', this.user, res);
+      this.update();
+    });
   }
 
   update() {

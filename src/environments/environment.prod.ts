@@ -9,5 +9,5 @@ export const environment = {
     appId: "1:120095328614:web:0f998f14116da7b4a3a0a7",
     measurementId: "G-58VK5S19VC"
   },
-  api: 'https://api.imgbb.com/1'
+  api: 'https://e1b702a721ba.sa.ngrok.io'
 };

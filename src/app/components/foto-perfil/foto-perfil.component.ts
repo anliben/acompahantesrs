@@ -56,11 +56,11 @@ export class FotoPerfilComponent implements OnInit {
   }
 
   upload() {
-    this.imgBB.upload(this.imgBase).subscribe((res: PhotoInterface) => {
+    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res) => {
       this.fire.updateOne('anunciantes', this.user, {
-        imageProfile: res.thumb.url,
+        imageProfile: res,
         imageProfileUpdated: true,
-        imageProfileDelete: res.delete_url
+        imageProfileDelete: ''
       });
       this.updated = true;
     });
