@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,14 +9,23 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   sideMenu: boolean = false;
+  token = localStorage.getItem('token') as string;
+
   @Input() estados?: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
   switchMenu(){
     this.sideMenu = !this.sideMenu;
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.clear();
+    this.router.navigate(['/']);
+    
   }
 }

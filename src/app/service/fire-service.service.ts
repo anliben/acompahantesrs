@@ -30,7 +30,7 @@ export class FireServiceService {
   }
 
   getWhere(collection: string, field: string, operator: any, value: any) {
-    return this.db.collection(collection, ref => ref.where(field, operator, value));
+      return this.db.collection(collection, ref => ref.where(field, operator, value));   
   }
 
   deleteOne(collection: string, data: any) {
@@ -44,7 +44,7 @@ export class FireServiceService {
       });
     });
   }
-
+  
   setOne(collection: string, dataRef: any, newData: any) {
     this.count = 1;
     let datas: any;

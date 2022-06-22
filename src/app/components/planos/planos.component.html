@@ -40,12 +40,22 @@
                 {{ ganho }}
               </p>
             </div>
-            <a
-              href="{{plano.link}}"
-              class="w-full block font-semibold text-primary bg-transparent border border-[#fbd4ff] rounded-md text-center p-4 hover:text-white hover:bg-secundary hover:border-secundary transition"
-            >
-              Escolher plano
-            </a>
+            <div *ngIf="planoActivated === true" >
+              <button
+                (click)="desativarPlano()"
+                class="w-full block font-semibold text-secundary bg-transparent border border-[#fbd4ff] rounded-md text-center p-4 hover:text-white hover:bg-secundary hover:border-secundary transition"
+              >
+                Desativar Plano
+              </button>
+            </div>
+            <div *ngIf="!planoActivated">
+              <a
+                href="{{plano.link}}"
+                class="w-full block font-semibold text-primary bg-transparent border border-[#fbd4ff] rounded-md text-center p-4 hover:text-white hover:bg-secundary hover:border-secundary transition"
+              >
+                Escolher plano
+              </a>
+            </div>
             <div>
               <span class="absolute right-0 top-7 z-[-1]">
                 <svg

@@ -32,8 +32,8 @@ export class AnuncioComponent implements OnInit {
         snap.forEach((doc) => {
           const data: any = doc.payload.doc.data() as object;
 
-          console.log(data.plano);
-          if (data.plano) {
+          console.log(data.planos);
+          if (data.planos) {
             console.log('pegando dados');
 
             this.fire
@@ -43,7 +43,6 @@ export class AnuncioComponent implements OnInit {
                 snap.forEach((doc) => {
                   const data: any = doc.payload.doc.data() as object;
                   console.log(data);
-
                   this.planoUpdated = true;
                 });
               });
@@ -52,6 +51,7 @@ export class AnuncioComponent implements OnInit {
           }
         });
       });
+      
   }
 
   desativarPlano() {

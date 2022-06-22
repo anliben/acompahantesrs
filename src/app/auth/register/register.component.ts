@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
   error_message: string = '';
 
   constructor(
+    private db: AngularFirestore,
     private router: Router,
     private service: RegisterService
   ) { }
@@ -28,6 +30,7 @@ export class RegisterComponent implements OnInit {
       this.error_message = ''
       if (this.password === this.re_password && this.password.length >= 6) {
         this.service.registerUser(this.email, this.password)
+        this.adcAnunciante();
       }else{
         this.error_message = 'Senhas diferentes ou menor que 6 caracteres'
       }
@@ -56,4 +59,28 @@ export class RegisterComponent implements OnInit {
       this.colorPasswordValid = 'border-red-600'
     }
   }
+
+  adcAnunciante(){
+
+    this.db.collection('anunciantes').add({
+    stars: 1,
+    user: this.email,
+    activated: false,
+    nome: '',
+    idade: '',
+    telefone: '',
+    cache: '',
+    cidade: '',
+    estado: '',
+    regiao: '',
+    descricao: '',
+    pagamento: '',
+    horario: '',
+    imageProfile: '',
+    imageBanner: '',
+    posts: [],
+    story: [],
+  }) 
+
+}
 }

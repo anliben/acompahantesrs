@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FireServiceService } from 'src/app/service/fire-service.service';
 import { LoginService } from './login.service';
 
 @Component({
@@ -13,8 +15,9 @@ export class LoginComponent implements OnInit {
   colorEmailValid: string = '';
   colorPasswordValid: string = '';
   error_message: string = '';
-
+  token: string = '12332312fdK233Kfs021';
   constructor(
+    private db: AngularFirestore,
     private service: LoginService
   ) { }
 
@@ -25,7 +28,10 @@ export class LoginComponent implements OnInit {
 
       if (this.password.length >= 6) {
         this.error_message = ''
-        this.service.login(this.email, this.password)
+        this.service.login(this.email, this.password);
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('user', this.email);
+
       }else{
         this.error_message = 'Senha menor que 6 caracteres'
         this.colorPasswordValid = 'border-red-600'
@@ -55,5 +61,5 @@ export class LoginComponent implements OnInit {
       this.colorPasswordValid = 'border-red-600'
     }
   }
-
+  
 }

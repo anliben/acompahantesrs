@@ -2,10 +2,10 @@
     <app-menu></app-menu>
     <div class="flex flex-col justify-center relative mt-20">
       <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-14">
-          <h1 class="absolute font-mono font-bold text-secundary text-2xl -mt-6">Publicações</h1>
+          <h1 class="absolute font-bold text-secundary text-2xl -mt-6">Publicações</h1>
           <div class="">
                 <h1 class=" mt-5 font-mono font-bold text-xl"></h1>
-                <figure class="shadow-2xl relative m-2 " (click)="updatePhotoPerfil()">
+                <figure class="shadow-2xl relative m-2 {{disabledFotoPerfil}}" (click)="updatePhotoPerfil()">
                   <img width="200px" height="100px" class="h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
                     src="/assets/image/background-profile-1.png"
                     alt="imagem de tal menina">
@@ -17,7 +17,7 @@
           </div>
           <div class="">
               <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2" (click)="updateBannerCidades()">
+              <figure class="shadow-2xl relative m-2 {{disabledFotoBanner}}" (click)="updateBannerCidades()">
                 <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
                   src="/assets/image/background-profile-1.png"
                   alt="imagem de tal menina">
@@ -29,7 +29,7 @@
           </div>
           <div class="">
               <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2">
+              <figure class="shadow-2xl relative m-2 {{disabledStory}}">
                 <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
                   src="/assets/image/background-profile-1.png"
                   alt="imagem de tal menina">
@@ -41,7 +41,7 @@
           </div>
           <div class="">
               <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2" (click)="updateYouPage()">
+              <figure class="shadow-2xl relative m-2 {{disabledFotoGaleria}}" (click)="updateYouPage()">
                 <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
                   src="/assets/image/background-profile-1.png"
                   alt="imagem de tal menina">
@@ -53,7 +53,7 @@
           </div>
       </section>
       <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-8">
-          <h1 class="absolute font-mono font-bold text-secundary text-2xl -mt-6">Configurações</h1>
+          <h1 class="absolute font-bold text-purple-700 text-2xl -mt-8">Configurações</h1>
           <div class="">
               <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
               <figure class="shadow-2xl relative m-2" (click)="editProfile()">
@@ -97,11 +97,21 @@
                 src="/assets/image/background-profile-2.png"
                 alt="imagem de tal menina">
               <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-sm">Sobre o Anuncio
+                <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Sobre o Anuncio
                 </figcaption>
               </div>
             </figure>
         </div>
+        <div 
+        class="w-[93%] h-[40px] bg-purple-700 {{colorButton}} rounded-md shadow-lg mt-2"
+        (click)="desativarAccount()"
+        >
+          <div class="flex justify-center my-2">
+            <span class="text-center text-white font-bold hover:bg-transparent text-sm">
+              {{textButton}}
+            </span>
+          </div>
+      </div>
       </section>
   </div>
 
