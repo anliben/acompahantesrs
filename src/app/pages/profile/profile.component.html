@@ -1,131 +1,125 @@
 <div *ngIf="verified">
-    <app-menu></app-menu>
-    <div class="flex flex-col justify-center relative mt-20">
-      <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-14">
-          <h1 class="absolute font-bold text-secundary text-2xl -mt-6">Publicações</h1>
-          <div class="">
-                <h1 class=" mt-5 font-mono font-bold text-xl"></h1>
-                <figure class="shadow-2xl relative m-2 {{disabledFotoPerfil}}" (click)="updatePhotoPerfil()">
-                  <img width="200px" height="100px" class="h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                    src="/assets/image/background-profile-1.png"
-                    alt="imagem de tal menina">
-                  <div class="absolute top-0 z-10 p-5 w-full h-full ">
-                    <figcaption class="text-center text-white font-mono font-bold text-xl">Foto de Perfil
-                    </figcaption>
-                  </div>
-                </figure>
+  <app-menu></app-menu>
+  <div class="flex flex-col justify-center relative mt-20">
+    <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-14">
+      <h1 class="absolute font-bold text-secundary text-2xl -mt-6">Publicações</h1>
+      <div class="">
+        <h1 class=" mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2 {{disabledFotoPerfil}}" (click)="updatePhotoPerfil()">
+          <img width="200px" height="100px"
+            class="h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-1.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full ">
+            <figcaption class="text-center text-white font-mono font-bold text-xl">Foto de Perfil
+            </figcaption>
           </div>
-          <div class="">
-              <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2 {{disabledFotoBanner}}" (click)="updateBannerCidades()">
-                <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                  src="/assets/image/background-profile-1.png"
-                  alt="imagem de tal menina">
-                <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                  <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Foto do Banner
-                  </figcaption>
-                </div>
-              </figure>
-          </div>
-          <div class="">
-              <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2 {{disabledStory}}">
-                <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                  src="/assets/image/background-profile-1.png"
-                  alt="imagem de tal menina">
-                <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                  <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Story
-                  </figcaption>
-                </div>
-              </figure>
-          </div>
-          <div class="">
-              <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2 {{disabledFotoGaleria}}" (click)="updateYouPage()">
-                <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                  src="/assets/image/background-profile-1.png"
-                  alt="imagem de tal menina">
-                <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                  <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Galeria
-                  </figcaption>
-                </div>
-              </figure>
-          </div>
-      </section>
-      <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-8">
-          <h1 class="absolute font-bold text-purple-700 text-2xl -mt-8">Configurações</h1>
-          <div class="">
-              <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-              <figure class="shadow-2xl relative m-2" (click)="editProfile()">
-                <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                  src="/assets/image/background-profile-2.png"
-                  alt="imagem de tal menina">
-                <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                  <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl ">Editar Perfil
-                  </figcaption>
-                </div>
-              </figure>
-        </div>
-        <div class="">
-            <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-            <figure class="shadow-2xl relative m-2 " (click)="updatePlans()">
-              <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                src="/assets/image/background-profile-2.png"
-                alt="imagem de tal menina">
-              <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Planos
-                </figcaption>
-              </div>
-            </figure>
-        </div>
-        <div class="">
-            <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-            <figure class="shadow-2xl relative m-2">
-              <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                src="/assets/image/background-profile-2.png"
-                alt="imagem de tal menina">
-              <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-lg">Estatísticas
-                </figcaption>
-              </div>
-            </figure>
-        </div>
-        <div class="" routerLink="anuncio">
-            <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
-            <figure class="shadow-2xl relative m-2">
-              <img width="200px" height="100px" class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
-                src="/assets/image/background-profile-2.png"
-                alt="imagem de tal menina">
-              <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
-                <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Sobre o Anuncio
-                </figcaption>
-              </div>
-            </figure>
-        </div>
-        <div 
-        class="w-[93%] h-[40px] bg-purple-700 {{colorButton}} rounded-md shadow-lg mt-2"
-        (click)="desativarAccount()"
-        >
-          <div class="flex justify-center my-2">
-            <span class="text-center text-white font-bold hover:bg-transparent text-sm">
-              {{textButton}}
-            </span>
-          </div>
+        </figure>
       </div>
-      </section>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2 {{disabledFotoBanner}}" (click)="updateBannerCidades()">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-1.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Foto do Banner
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2 {{disabledStory}}">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-1.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Story
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2 {{disabledFotoGaleria}}" (click)="updateYouPage()">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-1.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Galeria
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+    <section class="flex flex-row flex-wrap p-3 items-stretch align-sub justify-evenly w-[97%] mt-8">
+      <h1 class="absolute font-bold text-purple-700 text-2xl -mt-8">Configurações</h1>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2" (click)="editProfile()">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-2.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl ">Editar Perfil
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2 " (click)="updatePlans()">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-2.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Planos
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-2.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-lg">Estatísticas
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="" routerLink="anuncio">
+        <h1 class="text-purple-700 mt-5 font-mono font-bold text-xl"></h1>
+        <figure class="shadow-2xl relative m-2">
+          <img width="200px" height="100px"
+            class=" hover:opacity-100 h-[90px] w-[150px] md:h-[180px] md:w-[300px] object-cover rounded-[5px]"
+            src="/assets/image/background-profile-2.png" alt="imagem de tal menina">
+          <div class="absolute top-0 z-10 p-5 w-full h-full hover:opacity-100 hover:bg-transparent">
+            <figcaption class="text-center text-white font-mono font-bold hover:bg-transparent text-xl">Sobre o Anuncio
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="w-[93%] h-[40px] bg-purple-700 rounded-md shadow-lg mt-2"
+        (click)="desativarAccount()">
+        <div class="flex justify-center my-2">
+          <span class="text-center text-white font-bold hover:bg-transparent text-sm">
+            {{textButton}}
+          </span>
+        </div>
+      </div>
+    </section>
   </div>
 
 </div>
-<div
-  class="flex flex-col items-center justify-center h-screen w-screen"
-  *ngIf="!verified">
+<div class="flex flex-col items-center justify-center h-screen w-screen" *ngIf="!verified">
   <div class="mx-5 text-2xl text-justify">
     <strong>Ops!</strong> Sua conta nao esta ativa. <br> Por Favor! verifique sua
     caixa de entrada ou spam
   </div>
-  <button
-    class="bg-pink-600 rounded-md px-10 text-white font-bold font-mono py-3 mt-6"
-    (click)="requestCode()">
+  <button class="bg-pink-600 rounded-md px-10 text-white font-bold font-mono py-3 mt-6" (click)="requestCode()">
     Reenviar Codigo
   </button>
 </div>

@@ -112,6 +112,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "tgatasmix:build:production",
+            "firebaseProject": "acompanhantesrs-307c8",
+            "firebaseHostingSite": "acompanhantesrs-307c8"
+          }
         }
       }
     }

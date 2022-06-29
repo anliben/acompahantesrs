@@ -22,7 +22,6 @@ export class BannerDeCidadesComponent implements OnInit {
     private fire: FireServiceService,
     private imgBB: ImgbbService,
     private http: HttpClient
-
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class BannerDeCidadesComponent implements OnInit {
     this.fire
       .getWhere('anunciantes', 'user', '==', this.user)
       .snapshotChanges()
-      .forEach((snap) => {
+      .forEach((snap: any) => {
         const data = snap[0].payload.doc.data() as any;
         if (data.imageBanner === '') {
           this.img = 'https://via.placeholder.com/200x200' as unknown as File;
@@ -54,9 +53,13 @@ export class BannerDeCidadesComponent implements OnInit {
   }
 
   upload() {
-    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: PhotoInterface) => {
-      this.fire.updateOne('anunciantes', this.user, {
-        imageBanner: res,
+    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: any) => {
+      let finalurl = `https://api-acompanhantes.herokuapp.com${res.foto}`;
+      console.log(finalurl);
+      
+      
+       this.fire.updateOne('anunciantes', this.user, {
+        imageBanner: finalurl,
         imageBannerUpdated: true,
         imageBannerDelete: '',
       });

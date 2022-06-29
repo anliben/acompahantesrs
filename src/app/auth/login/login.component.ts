@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FireServiceService } from 'src/app/service/fire-service.service';
-import { LoginService } from './login.service';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +16,10 @@ export class LoginComponent implements OnInit {
   colorPasswordValid: string = '';
   error_message: string = '';
   token: string = '12332312fdK233Kfs021';
+
   constructor(
-    private db: AngularFirestore,
-    private service: LoginService
+    private auth: Auth,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -28,15 +29,18 @@ export class LoginComponent implements OnInit {
 
       if (this.password.length >= 6) {
         this.error_message = ''
-        this.service.login(this.email, this.password);
-        localStorage.setItem('token', this.token);
-        localStorage.setItem('user', this.email);
+        signInWithEmailAndPassword(this.auth, this.email, this.password).then((res) => {
+          localStorage.setItem('token', res.user.refreshToken);
+          localStorage.setItem('user', this.email);
+          this.router.navigate(['/profile']);
 
-      }else{
+        })
+
+      } else {
         this.error_message = 'Senha menor que 6 caracteres'
         this.colorPasswordValid = 'border-red-600'
       }
-    }else{
+    } else {
       this.error_message = 'Preencha todos os campos'
     }
   }
@@ -46,20 +50,20 @@ export class LoginComponent implements OnInit {
     if (re.test(this.email)) {
       this.colorEmailValid = 'border-green-600'
       this.error_message = ''
-    }else{
+    } else {
       this.colorEmailValid = 'border-red-600'
       this.error_message = 'Email inválido'
     }
   }
 
-  passwordChange(){
-    if(this.password.length >= 6){
+  passwordChange() {
+    if (this.password.length >= 6) {
       this.error_message = ''
       this.colorPasswordValid = 'border-green-600'
-    }else{
+    } else {
       this.error_message = 'Senha menor que 6 caracteres'
       this.colorPasswordValid = 'border-red-600'
     }
   }
-  
+
 }

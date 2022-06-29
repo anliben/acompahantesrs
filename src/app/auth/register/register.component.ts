@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Auth } from '@angular/fire/auth';
+import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { RegisterService } from './register.service';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +20,9 @@ export class RegisterComponent implements OnInit {
   error_message: string = '';
 
   constructor(
-    private db: AngularFirestore,
     private router: Router,
-    private service: RegisterService
+    private auth: Auth,
+    private firestore: Firestore
   ) { }
 
   ngOnInit(): void { }
@@ -29,12 +31,14 @@ export class RegisterComponent implements OnInit {
     if (this.email !== '' || this.password !== '') {
       this.error_message = ''
       if (this.password === this.re_password && this.password.length >= 6) {
-        this.service.registerUser(this.email, this.password)
-        this.adcAnunciante();
-      }else{
+        createUserWithEmailAndPassword(this.auth, this.email, this.password)
+          .then((res) => {
+            this.adcAnunciante();
+          })
+      } else {
         this.error_message = 'Senhas diferentes ou menor que 6 caracteres'
       }
-    }else{
+    } else {
       this.error_message = 'Preencha todos os campos'
     }
   }
@@ -44,43 +48,47 @@ export class RegisterComponent implements OnInit {
     if (re.test(this.email)) {
       this.colorEmailValid = 'border-green-600'
       this.error_message = ''
-    }else{
+    } else {
       this.colorEmailValid = 'border-red-600'
       this.error_message = 'Email inválido'
     }
   }
 
-  passwordChange(){
-    if(this.password.length >= 6){
+  passwordChange() {
+    if (this.password.length >= 6) {
       this.error_message = ''
       this.colorPasswordValid = 'border-green-600'
-    }else{
+    } else {
       this.error_message = 'Senha menor que 6 caracteres'
       this.colorPasswordValid = 'border-red-600'
     }
   }
 
-  adcAnunciante(){
+  adcAnunciante() {
 
-    this.db.collection('anunciantes').add({
-    stars: 1,
-    user: this.email,
-    activated: false,
-    nome: '',
-    idade: '',
-    telefone: '',
-    cache: '',
-    cidade: '',
-    estado: '',
-    regiao: '',
-    descricao: '',
-    pagamento: '',
-    horario: '',
-    imageProfile: '',
-    imageBanner: '',
-    posts: [],
-    story: [],
-  }) 
+    let col = collection(this.firestore, 'anunciantes');
+    addDoc(col, {
+      stars: 1,
+      user: this.email,
+      activated: false,
+      nome: '',
+      idade: '',
+      telefone: '',
+      cache: '',
+      cidade: '',
+      estado: '',
+      regiao: '',
+      descricao: '',
+      pagamento: '',
+      horario: '',
+      imageProfile: '',
+      imageBanner: '',
+      posts: [],
+      story: [],
+    }).then(() => {
+      localStorage.setItem('user', this.email);
+      this.router.navigate(['/login']);
+    })
 
-}
+  }
 }

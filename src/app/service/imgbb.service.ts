@@ -13,9 +13,11 @@ export class ImgbbService {
 
   constructor(
     private http: HttpClient,
+    
   ) { }
 
   uploadFoto(file: File, name: any): Observable<any> {
+
     const url = `${environment.api}/upload/foto`;
     const formData = new FormData();
     formData.append('file', file);

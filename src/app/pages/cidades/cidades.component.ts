@@ -1,7 +1,9 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Firestore, getDoc, query, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { collection, getDocs } from 'firebase/firestore';
 
-import { FireServiceService } from 'src/app/service/fire-service.service';
 
 @Component({
   selector: 'app-cidades',
@@ -17,25 +19,25 @@ export class CidadesComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
-    private fire: FireServiceService
+    private firestore: Firestore
   ) { }
 
   ngOnInit(): void {
 
-    console.log(
-      this.router.url.split('/')[1].split('-').join(' ')
-    );
-
     let cidade: string = this.router.url.split('/')[1].split('-').join(' ')
+    let col = collection(this.firestore, 'anunciantes')
+    let q = query(
+      col,
+      where('cidade', '==', cidade),
+      where('activated', '==', true)
+    )
 
-    this.fire.getWhere('anunciantes', 'cidade', '==', cidade).snapshotChanges().forEach(snap => {
-      snap.forEach(doc => {
-        let id = doc.payload.doc.id;
-        const data: any = doc.payload.doc.data();
-        this.anunciantes.push({ id: id, ...data });
-      });
-    });
-
+    getDocs(q).then(res => {
+      let m = res.docs.map((item) => {
+        return { ...item.data(), id: item.id }
+      })
+      this.anunciantes = m
+    })
   }
 
   changeScreen(local: string, user: string) {
@@ -47,5 +49,5 @@ export class CidadesComponent implements OnInit {
   }
   identify(index: number, item: any) {
     return item.id;
- }
+  }
 }

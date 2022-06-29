@@ -2,12 +2,12 @@
 <main class="pb-10 mt-24">
   <div>
     <div class="flex justify-center">
-      <img width="100%" src="{{imageBanner}}" alt="acompanhantes rs - perfil {{nome}}" class="object-cover md:h-[220px] lg:w-[900px] lg:h-[300px]">
+      <img width="100%" src="{{anunciante.imageBanner}}" alt="acompanhantes rs - perfil {{anunciante.nome}}" class="object-cover md:h-[220px] lg:w-[900px] lg:h-[300px]">
     </div>
     <div class="">
       <div class="flex lg:justify-center">
       <div class="flex flex-col lg:w-[900px]">
-        <p class="ml-5 mt-5 text-secundary font-bold text-2xl">{{nome}}</p>
+        <p class="ml-5 mt-5 text-secundary font-bold text-2xl">{{anunciante.nome}}</p>
         <h5 class="ml-5 font-semibold mb-5 lg:mb-8">informacoes sobre mim</h5>
       </div>
     </div>
@@ -20,9 +20,9 @@
            <div class="text-center font-medium rounded-xl mx-1">Horario</div>
          </div>
          <div class="grid grid-cols-3 w-full">
-           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md ">{{nome}}</div>
-           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md">{{idade}}</div>
-           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md">{{horario}}</div>
+           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md ">{{anunciante.nome}}</div>
+           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md">{{anunciante.idade}}</div>
+           <div class="text-center bg-secundary text-white font-semibold rounded-xl mx-1 shadow-md">{{anunciante.horario}}</div>
          </div>
       </div>
     </div>
@@ -34,31 +34,31 @@
           <div class="text-center font-medium rounded-xl mx-1">Cidade</div>
         </div>
         <div class="grid grid-cols-3 w-full">
-          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{cache}}</div>
-          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{pagamento}}</div>
-          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{cidade}}</div>
+          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{anunciante.cache}}</div>
+          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{anunciante.pagamento}}</div>
+          <div class="text-center bg-secundary text-white font-semibold text-[15px] rounded-xl px-1 mx-1 shadow-md">{{anunciante.cidade}}</div>
         </div>
       </div>
     </div>
     <h5 class="text-center font-semibold mt-5">Descricao</h5>
     <div class="flex justify-center">
       <div class="bg-primary rounded-xl mx-1 w-[500px] lg:w-[800px]">
-        <p class="text-white font-bold pl-5 text-justify text-[12px] pr-6 py-2">{{descricao}}</p>
+        <p class="text-white font-bold pl-5 text-justify text-[12px] pr-6 py-2">{{anunciante.descricao}}</p>
       </div>
    </div>
     </div>
     <div class="flex flex-row items-center justify-evenly mt-10">
-      <a href="https://wa.me/{{telefone}}?text=2434234">
+      <a href="https://wa.me/{{anunciante.telefone}}?text=2434234">
         <button class="px-5 py-3 bg-secundary text-white  border-2 border-solid border-white font-extrabold rounded-md shadow-md">whatsapp</button>
       </a>
-      <a href="tel:{{telefone}}">
+      <a href="tel:{{anunciante.telefone}}">
         <button class="px-5 py-3 bg-secundary text-white  border-2 border-solid border-white font-extrabold rounded-md shadow-md">telefone</button>
       </a>
     </div>
     <div class="flex justify-center">
       <div class="max-w-[400px]">
-        <div *ngFor="let post of posts" class="flex flex-col items-center justify-center flex-wrap mt-10">
-          <img class="w-full h-[450px]" src="{{post}}" alt="acompanhantes rs - perfil {{nome}}" class="object-cover" >
+        <div *ngFor="let post of anunciante.posts" class="flex flex-col items-center justify-center flex-wrap mt-10">
+          <img class="w-full h-[450px]" src="{{post}}" alt="acompanhantes rs - perfil {{anunciante.nome}}" class="object-cover" >
         </div>
       </div>
 

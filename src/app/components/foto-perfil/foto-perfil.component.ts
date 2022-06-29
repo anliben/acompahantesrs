@@ -56,9 +56,10 @@ export class FotoPerfilComponent implements OnInit {
   }
 
   upload() {
-    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res) => {
+    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: any) => {
+      let finalurl = `https://api-acompanhantes.herokuapp.com${res.foto}`;
       this.fire.updateOne('anunciantes', this.user, {
-        imageProfile: res,
+        imageProfile: finalurl,
         imageProfileUpdated: true,
         imageProfileDelete: ''
       });

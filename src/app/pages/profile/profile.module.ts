@@ -8,8 +8,7 @@ import { ModalComponent } from 'src/app/shared/modal/modal.component';
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
-
+    ProfileRoutingModule
   ],
   providers: [ModalComponent],
 })

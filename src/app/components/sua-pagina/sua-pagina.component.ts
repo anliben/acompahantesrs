@@ -93,8 +93,12 @@ export class SuaPaginaComponent implements OnInit {
 
   upload() {
     this.imgBB.uploadFotos(this.imgBase, this.user).subscribe((res: any) => {
-      this.fire.setOne('anunciantes', this.user, res);
-      this.update();
+      console.log(res);
+      res.forEach((response: string) => {
+        let finalurl = 'https://api-acompanhantes.herokuapp.com' + response;
+        this.fire.setOne('anunciantes', this.user, finalurl);
+        this.update();
+      })
     });
   }
 

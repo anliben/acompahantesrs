@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { collection, doc, Firestore, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { EstadosService } from 'src/app/pages/estados/estados.service';
-import { FireServiceService } from 'src/app/service/fire-service.service';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class EditProfileComponent implements OnInit {
   infos: any;
   estados: any[] = [];
   cidades: any[] = [];
-  user?: string;
+  user: any;
 
   mostrar: boolean = false;
   editado: boolean = false;
@@ -27,34 +26,33 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private db: AngularFirestore,
-    private fire: FireServiceService,
-    private estadosService: EstadosService
+    private estadosService: EstadosService,
+    private firestore: Firestore
   ) { }
 
   ngOnInit() {
     this.cidades = this.estadosService.getCidades();
-    this.user = localStorage.getItem('user') as string;
-    this.fire.getAll('pais').snapshotChanges().forEach(snap => {
-      snap.forEach(doc => {
-        const data = doc.payload.doc.data() as object;
-        this.estados.push({...data });
-      });
-    });
-    this.createForm(model);
-    console.log(this.user);
-     
+    this.user = localStorage.getItem('id') as string;
+
+    let col = collection(this.firestore, 'pais')
+    getDocs(col).then((res) => {
+      let pais = res.docs.map((item: any) => {
+        return {...item.data(), id: item.id}
+      })
+      this.estados = pais;
+    })
+    
+     this.createForm(model);
 }
 
   saveProfile() {
-   
-      this.fire.updateOne('anunciantes', this.user, {...this.formPerfil.value, activated: true})
-
-        this.mostrar = true;
-        localStorage.removeItem('perfilEdited');
-        localStorage.setItem('perfilEdited', 'true');
-        this.editado = true;
-      
+    let docRef = doc(this.firestore, 'anunciantes', this.user);
+    updateDoc(docRef, {...this.formPerfil.value, activated: true}).then(()=>{
+      this.mostrar = true;
+      localStorage.removeItem('perfilEdited');
+      localStorage.setItem('perfilEdited', 'true');
+      this.editado = true;
+    })
   }
 
   backProfile() {

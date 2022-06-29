@@ -12,13 +12,6 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FotoPerfilComponent } from './components/foto-perfil/foto-perfil.component';
-// Import Firebase modules + environment
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreCollectionGroup, AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { environment } from 'src/environments/environment';
 import { BannerDeCidadesComponent } from './components/banner-de-cidades/banner-de-cidades.component';
 import { StoryComponent } from './components/story/story.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +24,14 @@ import { SuaPaginaModule } from './components/sua-pagina/sua-pagina.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -56,18 +57,20 @@ import { AnuncioComponent } from './components/anuncio/anuncio.component';
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
     SuaPaginaModule,
     HttpClientModule,
     ServiceWorkerModule.register('sw.js'),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    providePerformance(() => getPerformance()),
+    provideStorage(() => getStorage()),
   ],
-  providers: [ModalComponent],
+  providers: [ModalComponent, ScreenTrackingService,UserTrackingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

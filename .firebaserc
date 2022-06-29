@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "acompanhantesrs-307c8": {
+      "hosting": {
+        "tgatasmix": [
+          "acompanhantesrs-307c8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "acompanhantesrs-307c8"
+  }
+}
