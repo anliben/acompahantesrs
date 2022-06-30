@@ -1,3 +1,4 @@
+import { getStorage, ref, uploadBytes, uploadString } from '@angular/fire/storage';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PhotoInterface } from 'src/app/interfaces/photo.interface';
@@ -87,19 +88,24 @@ export class SuaPaginaComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       this.imgBase = event.target.files[0];
       this.updated = true;
-
     }
   }
 
   upload() {
-    this.imgBB.uploadFotos(this.imgBase, this.user).subscribe((res: any) => {
+    let storage = getStorage();
+    let storageRef = ref(storage, "galeria/foto.png"); 
+    let imgUpload = uploadString(storageRef, (this.imgBase as any), 'base64').then((res: any) => {
+      console.log(res);
+    })
+    
+   /*  this.imgBB.uploadFotos(this.imgBase, this.user).subscribe((res: any) => {
       console.log(res);
       res.forEach((response: string) => {
         let finalurl = 'https://api-acompanhantes.herokuapp.com' + response;
         this.fire.setOne('anunciantes', this.user, finalurl);
         this.update();
       })
-    });
+    }); */
   }
 
   update() {

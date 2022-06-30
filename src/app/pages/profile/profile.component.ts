@@ -11,6 +11,7 @@ import { doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestor
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  
 })
 export class ProfileComponent implements OnInit {
   title?: string;
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   activated: any = localStorage.getItem('activated');
   colorButton: string = '';
   textButton: string = '';
-
+  
   constructor(
     private router: Router,
     public modal: ModalComponent,
@@ -137,6 +138,14 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['profile/edit-profile']);
   }
 
+  viewProfile() {
+    let cidade = localStorage.getItem('cidade');
+    let nome = localStorage.getItem('nome')?.toString();
+    console.log(cidade);
+    console.log(nome);
+    this.router.navigate(['perfil/porto-alegre/'+{nome}]);
+  }
+
   verifyAccount() {
     if (this.code !== '') {
       applyActionCode(this.auth, this.code)
@@ -160,7 +169,6 @@ export class ProfileComponent implements OnInit {
 
   getInfoUser() {
 
-
     let col = collection(this.firestore, 'anunciantes')
     let q = query(
       col,
@@ -168,6 +176,8 @@ export class ProfileComponent implements OnInit {
     );
     getDocs(q).then((res) => {
       res.forEach((item: any) => {
+        console.log(item.data());
+        
         localStorage.setItem('id', item.id);
         this.id = item.id
         localStorage.setItem('nome', item.data().nome);
@@ -185,6 +195,7 @@ export class ProfileComponent implements OnInit {
 
       })
     })
+    
 
   }
 
@@ -214,6 +225,9 @@ export class ProfileComponent implements OnInit {
       this.textButton = 'Conta Desativada';
       this.colorButton = 'brightness-[0.25]';
     } else if (this.activated === "true" || this.activated === true) {
+      this.textButton = 'Desativar Conta';
+      this.colorButton = 'filter-none';
+    } else{
       this.textButton = 'Desativar Conta';
       this.colorButton = 'filter-none';
     }

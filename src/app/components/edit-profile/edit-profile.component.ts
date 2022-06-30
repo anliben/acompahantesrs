@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { collection, doc, Firestore, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { applyActionCode, Auth, authState, onAuthStateChanged } from '@angular/fire/auth';
+import { collection, Firestore } from '@angular/fire/firestore';
+import { sendEmailVerification } from 'firebase/auth';
+import { doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { EstadosService } from 'src/app/pages/estados/estados.service';
 
 
@@ -31,7 +34,8 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cidades = this.estadosService.getCidades();
+
+     this.cidades = this.estadosService.getCidades();
     this.user = localStorage.getItem('id') as string;
 
     let col = collection(this.firestore, 'pais')
@@ -42,17 +46,21 @@ export class EditProfileComponent implements OnInit {
       this.estados = pais;
     })
     
-     this.createForm(model);
+     this.createForm(model); 
+
+     console.log(localStorage.getItem('nome'));
+     
+
 }
 
   saveProfile() {
-    let docRef = doc(this.firestore, 'anunciantes', this.user);
+     let docRef = doc(this.firestore, 'anunciantes', this.user);
     updateDoc(docRef, {...this.formPerfil.value, activated: true}).then(()=>{
       this.mostrar = true;
       localStorage.removeItem('perfilEdited');
       localStorage.setItem('perfilEdited', 'true');
       this.editado = true;
-    })
+    }) 
   }
 
   backProfile() {
@@ -79,6 +87,7 @@ export class EditProfileComponent implements OnInit {
   identify(index: number, item: any) {
     return item.id;
  }
+
 }
 
 function model(model: any, any: any) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, reload } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
