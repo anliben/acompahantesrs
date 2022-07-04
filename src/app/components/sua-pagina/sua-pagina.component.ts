@@ -93,10 +93,19 @@ export class SuaPaginaComponent implements OnInit {
 
   upload() {
     let storage = getStorage();
-    let storageRef = ref(storage, "galeria/foto.png"); 
-    let imgUpload = uploadString(storageRef, (this.imgBase as any), 'base64').then((res: any) => {
+    let storageRef = ref(storage, "fotos");
+    console.log(this.imgBase);
+    const metadata = {
+      contentType: 'image/webp',
+    };
+    uploadBytes(storageRef, this.imgBase).then((res)=>{
       console.log(res);
+      
     })
+    
+   /*  let imgUpload = uploadString(storageRef, (this.imgBase as any), 'base64').then((res: any) => {
+      console.log(res);
+    }) */
     
    /*  this.imgBB.uploadFotos(this.imgBase, this.user).subscribe((res: any) => {
       console.log(res);
