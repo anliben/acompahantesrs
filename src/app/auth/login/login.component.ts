@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   colorPasswordValid: string = '';
   error_message: string = '';
   token: string = '12332312fdK233Kfs021';
-
+  showPassword: boolean = false;
   constructor(
     private auth: Auth,
     private router: Router
@@ -64,6 +64,10 @@ export class LoginComponent implements OnInit {
       this.error_message = 'Senha menor que 6 caracteres'
       this.colorPasswordValid = 'border-red-600'
     }
+  }
+
+  showHidePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

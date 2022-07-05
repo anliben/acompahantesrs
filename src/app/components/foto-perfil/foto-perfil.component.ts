@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoInterface } from 'src/app/interfaces/photo.interface';
 import { FireServiceService } from 'src/app/service/fire-service.service';
 import { ImgbbService } from 'src/app/service/imgbb.service';
+import { getStorage, ref, uploadBytes, uploadString } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-foto-perfil',
@@ -24,7 +26,8 @@ export class FotoPerfilComponent implements OnInit {
   constructor(
     private fire: FireServiceService,
     private imgBB: ImgbbService,
-    private http: HttpClient
+    private http: HttpClient,
+    private storage:AngularFireStorage
     ) {}
 
   ngOnInit(): void {
@@ -56,7 +59,9 @@ export class FotoPerfilComponent implements OnInit {
   }
 
   upload() {
-    this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: any) => {
+  
+
+  /*   this.imgBB.uploadFoto(this.imgBase, this.user).subscribe((res: any) => {
       let finalurl = `https://api-acompanhantes.herokuapp.com${res.foto}`;
       this.fire.updateOne('anunciantes', this.user, {
         imageProfile: finalurl,
@@ -64,7 +69,7 @@ export class FotoPerfilComponent implements OnInit {
         imageProfileDelete: ''
       });
       this.updated = true;
-    });
+    }); */
   }
   deleteImage(){
     this.fire.updateOne('anunciantes', this.user, {
